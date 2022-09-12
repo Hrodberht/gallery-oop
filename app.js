@@ -54,6 +54,7 @@ Gallery.prototype.setMainImage = function (selectedImage) {
 
 Gallery.prototype.closeModal = function () {
   this.modal.classList.remove("open");
+  this.closeBtn.removeEventListener("click", this.closeModal);
 };
 
 const nature = new Gallery(getElement(".nature"));
