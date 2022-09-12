@@ -24,12 +24,15 @@ function Gallery(element) {
   this.container.addEventListener(
     "click",
     function (e) {
-      this.openModal();
+      if (e.target.classList.contains("img")) {
+        this.openModal(e.target, this.list);
+      }
     }.bind(this)
   );
 }
 
-Gallery.prototype.openModal = function () {
+Gallery.prototype.openModal = function (selectedImage, list) {
+  console.log(selectedImage, list);
   this.modal.classList.add("open");
 };
 
