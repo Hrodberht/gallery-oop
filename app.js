@@ -15,6 +15,7 @@ function Gallery(element) {
   // target
   this.modal = getElement(".modal");
   this.modalImg = getElement(".main-img");
+  this.imageName = getElement(".image-name");
   this.modalImages = getElement(".modal-images");
   this.closeBtn = getElement(".close-btn");
   this.nextBtn = getElement(".next-btn");
@@ -32,8 +33,13 @@ function Gallery(element) {
 }
 
 Gallery.prototype.openModal = function (selectedImage, list) {
-  console.log(selectedImage, list);
+  this.setMainImage(selectedImage);
   this.modal.classList.add("open");
+};
+
+Gallery.prototype.setMainImage = function (selectedImage) {
+  this.modalImg.src = selectedImage.src;
+  this.imageName.textContent = selectedImage.title;
 };
 
 const nature = new Gallery(getElement(".nature"));
