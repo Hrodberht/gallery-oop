@@ -21,6 +21,8 @@ function Gallery(element) {
   this.nextBtn = getElement(".next-btn");
   this.prevBtn = getElement(".prev-btn");
 
+  this.closeModal = this.closeModal.bind(this);
+
   // container event
   this.container.addEventListener(
     "click",
@@ -42,11 +44,16 @@ Gallery.prototype.openModal = function (selectedImage, list) {
     })
     .join("");
   this.modal.classList.add("open");
+  this.closeBtn.addEventListener("click", this.closeModal);
 };
 
 Gallery.prototype.setMainImage = function (selectedImage) {
   this.modalImg.src = selectedImage.src;
   this.imageName.textContent = selectedImage.title;
+};
+
+Gallery.prototype.closeModal = function () {
+  this.modal.classList.remove("open");
 };
 
 const nature = new Gallery(getElement(".nature"));
